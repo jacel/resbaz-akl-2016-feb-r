@@ -1,0 +1,36 @@
+---
+title: "ResBaz R Session"
+author: "Elsie Jacobson"
+date: "3 February 2016"
+output: word_document
+---
+
+This is a breast cancer dataset from 2002, we wanted to look at Grade and RFS months
+
+```{r}
+#setwd('Desktop/r-data/')
+getwd()
+
+dat <- read.csv('vandevijver-CLIN-STAT435.csv')
+
+dim(dat)
+```
+
+Let's look at the data - RFS months
+
+```{r}
+hist(dat$RFS.months)
+```
+
+Now for Grade
+
+```{r}
+dat$Grade <- as.factor(dat$Grade)
+plot(dat$Grade)
+```
+
+Look at them together
+
+```{r}
+boxplot(dat$RFS.months~dat$Grade, main = 'RFS months and Grade')
+```
